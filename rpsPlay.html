@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Rock, Paper, Scissors!</title>
+  </head>
+  <body>
+    <script>
+        //Generate random move from computer.
+        function computerPlay() {
+            let plays = ["rock", "paper", "scissors"]
+            return plays[Math.floor(Math.random() * plays.length)];
+        }
+        //Accept a move from the player
+        function yourMove(){
+            let choice = prompt("Rock, Paper, or Scissors?").toLowerCase()
+            return choice;
+        }
+        //Plays a single round of rock paper scissors.
+        function playRound(playerSelection, computerSelection){
+            
+            let result = " ";
+
+
+            if (playerSelection == "rock" && computerSelection == "paper") {
+                result = "You lose! Paper beats Rock"
+            }
+            else if (playerSelection == "rock" && computerSelection == "scissors") {
+                result = "You win! Rock beats Scissors"
+            }
+            else if (playerSelection == "scissors" && computerSelection == "paper") {
+                result = "You win! Scissors beat Paper"
+            }
+            else if (playerSelection == "scissors" && computerSelection == "rock") {
+                result = "You lose! Rock beats Scissors"
+            }
+            else if (playerSelection == "paper" && computerSelection == "rock") {
+                result = "You win! Paper beats Rock"
+            }
+            else if (playerSelection == "paper" && computerSelection == "scissors") {
+                result = "You lose! Scissors beat Paper"
+            }
+            else if (playerSelection == computerSelection){
+                result = "Whoops! We have a tie! Play again."
+            }
+            else if (playerSelection != "rock"|| "paper" || "scissors"){
+                result = "You did not select rock, paper, or scissors. Pick one for the next round."
+            }
+            return result;
+        }
+        //Loops the playRound function five times to play five rounds.
+        function game(){
+            console.log("Let's begin!");
+            for (let i=0; i<5; i++) {
+            console.log(playRound(yourMove(), computerPlay()))
+            }
+        }
+
+    </script>
+  </body>
+</html>
